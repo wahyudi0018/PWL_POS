@@ -10,9 +10,11 @@ class UserController extends Controller
 {
     public function index()
     {
+        // Akses model UserModel
         // $user = UserModel::all();
         // return view('user', ['data' => $user]);
 
+        // Menambah data
         // $data = [
         //     'username' => 'Customer-1',
         //     'nama' => 'Pelanggan',
@@ -24,6 +26,7 @@ class UserController extends Controller
         // $user = UserModel::all();
         // return view('user', ['data' => $user]);
 
+        // Mengupdate data
         // $data = [
         //     'nama' => 'Pelanggan Pertama',
         // ];
@@ -32,6 +35,7 @@ class UserController extends Controller
         // $user = UserModel::all();
         // return view('user', ['data' => $user]);
 
+        // Menambah data menggunakan $fillable
         // $data = [
         //     'level_id' => 2,
         //     'username' => 'manager_2',
@@ -43,17 +47,7 @@ class UserController extends Controller
         // $user = UserModel::all();
         // return view('user', ['data' => $user]);
 
-        // $data = [
-        //     'level_id' => 2,
-        //     'username' => 'manager_tiga',
-        //     'nama' => 'Manager 3',
-        //     'password' => Hash::make('12345')
-        // ];
-        // UserModel::create($data);
-
-        // $user = UserModel::all();
-        // return view('user', ['data' => $user]);
-
+        // Implementasi Retrieving Single Models
         // $user = UserModel::find(1);
         // return view('user', ['data' => $user]);
 
@@ -73,10 +67,16 @@ class UserController extends Controller
         // });
         // return view('user', ['data' => $user]);
 
+        // Implementasi Not Found Exceptions
         // $user = UserModel::findOrFail(1);
         // return view('user', ['data' => $user]);
 
-        $user = UserModel::where('username', 'manager9')->firstOrFail();
-        return view('user', ['data' => $user]);
+        // $user = UserModel::where('username', 'manager9')->firstOrFail();
+        // return view('user', ['data' => $user]);
+
+        // Implementasi Retreiving Aggregrates
+        $user = UserModel::where('level_id', 2)->count();
+        // dd($user);
+        return view('user', ['data'=> $user]);
     }
 }
