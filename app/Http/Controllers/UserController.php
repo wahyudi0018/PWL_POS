@@ -11,8 +11,8 @@ class UserController extends Controller
     public function index()
     {
         // Akses model UserModel
-        $user = UserModel::all();
-        return view('user', ['data' => $user]);
+        // $user = UserModel::all();
+        // return view('user', ['data' => $user]);
 
         // Menambah data
         // $data = [
@@ -145,8 +145,17 @@ class UserController extends Controller
         // $user->wasChanged(['username', 'level_id']);
         // $user->wasChanged('nama');
         // dd($user->wasChanged(['nama', 'username']));
+
+        // Implementasi Relationships
+        // $user = UserModel::with('level')->get();
+        // dd($user);
+
+         $user = UserModel::with('level')->get();
+         return view('user', ['data' => $user]);
     }
 
+    // Implementasi CRUD
+    // Fungsi tambah
     public function tambah()
     {
         return view('user_tambah');
@@ -164,6 +173,7 @@ class UserController extends Controller
         return redirect('/user');
     }
 
+    // Fungsi ubah
     public function ubah($id)
     {
         $user = UserModel::find($id);
@@ -184,6 +194,7 @@ class UserController extends Controller
         return redirect('/user');
     }
 
+    // Fungsi hapus
     public function hapus($id)
     {
         $user = UserModel::find($id);
@@ -191,6 +202,5 @@ class UserController extends Controller
 
         return redirect('/user');
     }
-
 
 }
