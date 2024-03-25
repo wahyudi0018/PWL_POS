@@ -22,6 +22,8 @@ Route::get('/', function () {
 
 // Route level
 Route::get('/level', [LevelController::class, 'index']);
+Route::get('/level/tambah', [LevelController::class, 'tambah']);
+Route::post('/level', [LevelController::class, 'store']);
 
 // Route kategori
 Route::get('/kategori', [KategoriController::class, 'index']);

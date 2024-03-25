@@ -322,6 +322,16 @@ return [
             'icon' => 'fas fa-home',
         ],
         [
+            'text' => 'Level',
+            'url' => 'level',
+            'icon' => 'fa fa-signal mr-1',
+        ],
+        [
+            'text' => 'User',
+            'url' => 'user',
+            'icon' => 'fa fa-users mr-1',
+        ],
+        [
             'text' => 'Category',
             'url' => 'kategori',
             'icon' => 'fa fa-boxes mr-1',

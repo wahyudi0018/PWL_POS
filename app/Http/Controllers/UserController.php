@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserPostRequest;
+Use illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -161,17 +163,17 @@ class UserController extends Controller
         return view('user_tambah');
     }
 
-    public function tambah_simpan(Request $request)
-    {
-        UserModel::create([
-            'username' => $request->username,
-            'nama' => $request->nama,
-            'password' => Hash::make('$request->password'),
-            'level_id' => $request->level_id
-        ]);
+    // public function tambah_simpan(Request $request)
+    // {
+    //     UserModel::create([
+    //         'username' => $request->username,
+    //         'nama' => $request->nama,
+    //         'password' => Hash::make('$request->password'),
+    //         'level_id' => $request->level_id
+    //     ]);
 
-        return redirect('/user');
-    }
+    //     return redirect('/user');
+    // }
 
     // Fungsi ubah
     public function ubah($id)
@@ -199,6 +201,16 @@ class UserController extends Controller
     {
         $user = UserModel::find($id);
         $user->delete();
+
+        return redirect('/user');
+    }
+
+    public function tambah_simpan(UserPostRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $validated = $request->safe()->only(['username', 'password', 'nama', 'level_id']);
+        $validated = $request->safe()->except(['username', 'password', 'nama', 'level_id']);
 
         return redirect('/user');
     }
