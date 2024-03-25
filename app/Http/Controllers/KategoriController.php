@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\DataTables\KategoriDataTable;
 use App\Models\KategoriModel;
+Use illuminate\Http\RedirectResponse;
+use illuminate\View\View;
+
 class KategoriController extends Controller
 {
     // public function index()
@@ -38,45 +41,59 @@ class KategoriController extends Controller
         return $dataTable->render('kategori.index');
     }
 
+    // public function create()
+    // {
+    //     return view('kategori.create');
+    // }
+
+
+    // public function store(Request $request)
+    // {
+    //     KategoriModel::create([
+    //         'kategori_kode' => $request->kodeKategori,
+    //         'kategori_nama' => $request->namaKategori,
+    //     ]);
+    //     return redirect('/kategori');
+    // }
+
+    // public function update($id)
+    // {
+    //     $kategori = KategoriModel::find($id);
+    //     return view('kategori.update', compact('kategori'));
+    // }
+
+    // public function saveUpdate($id, Request $request)
+    // {
+    //     $kategori = KategoriModel::find($id);
+    //     if (!$kategori) {
+    //         return redirect()->back();
+    //     }
+
+    //     $kategori->kategori_kode = $request->kodeKategori;
+    //     $kategori->kategori_nama = $request->namaKategori;
+    //     $kategori->save();
+
+    //     return redirect('/kategori');
+    // }
+
+    // public function destroy($id)
+    // {
+    //     KategoriModel::destroy($id);
+    //     return redirect('/kategori');
+    // }
+
     public function create()
     {
         return view('kategori.create');
     }
 
-
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        KategoriModel::create([
-            'kategori_kode' => $request->kodeKategori,
-            'kategori_nama' => $request->namaKategori,
+        $validated =  $request->validate([
+            'kategori_kode' => 'required',
+            'kategori_nama' => 'required',
         ]);
-        return redirect('/kategori');
-    }
-
-    public function update($id)
-    {
-        $kategori = KategoriModel::find($id);
-        return view('kategori.update', compact('kategori'));
-    }
-
-    public function saveUpdate($id, Request $request)
-    {
-        $kategori = KategoriModel::find($id);
-        if (!$kategori) {
-            return redirect()->back();
-        }
-
-        $kategori->kategori_kode = $request->kodeKategori;
-        $kategori->kategori_nama = $request->namaKategori;
-        $kategori->save();
 
         return redirect('/kategori');
     }
-
-    public function destroy($id)
-    {
-        KategoriModel::destroy($id);
-        return redirect('/kategori');
-    }
-
 }
