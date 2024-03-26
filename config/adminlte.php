@@ -336,6 +336,12 @@ return [
             'url' => 'kategori',
             'icon' => 'fa fa-boxes mr-1',
         ],
+        ['header' => 'M_USER'],
+        [
+            'text' => 'CRUD User',
+            'url' => 'm_user',
+            'icon' => 'fas fa-users mr-1',
+        ],
         // [
         //     'text' => 'pages',
         //     'url' => 'admin/pages',
