@@ -1,5 +1,5 @@
-@extends('m_user/template')
-{{-- @extends('layout.app') --}}
+{{-- @extends('m_user/template') --}}
+@extends('layout.app')
 
 @section('subtitle', 'User')
 @section('content_header_title', 'M_User')
@@ -34,6 +34,7 @@
                 <th width="200px"class="text-center">username</th>
                 <th width="200px"class="text-center">nama</th>
                 <th width="150px"class="text-center">password</th>
+                <th width="300px"class="text-center">Aksi</th>
             </tr>
 
             @foreach ($useri as $m_user)

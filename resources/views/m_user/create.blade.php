@@ -1,9 +1,9 @@
-@extends('m_user/template')
-{{-- @extends('layout.app') --}}
+{{-- @extends('m_user/template') --}}
+@extends('layout.app')
 
 @section('subtitle', 'User')
 @section('content_header_title', 'M_User')
-@section('content_header_subtitle', 'Create')
+@section('content_header_subtitle', 'Tambah')
 
 @section('content')
 <div class="card">
