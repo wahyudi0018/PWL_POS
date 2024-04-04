@@ -5,6 +5,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\POSController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ use App\Http\Controllers\POSController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route level
 Route::get('/level', [LevelController::class, 'index']);
@@ -44,3 +45,6 @@ Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 
 // Route POS
 Route::resource('m_user', POSController::class);
+
+// Route Laravel Starter Code
+Route::get('/', [WelcomeController::class, 'index']);
