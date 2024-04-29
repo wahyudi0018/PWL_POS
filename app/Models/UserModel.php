@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UserModel extends Model implements Authenticatable
+class UserModel extends Model implements Authenticatable, JWTSubject
 {
     use HasFactory, AuthenticatableTrait;
 
