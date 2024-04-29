@@ -73,7 +73,7 @@
                 {
                     data: "penjualan_kode",
                     className: "",
-                    orderable: false,
+                    orderable: true,
                     searchable: true
                 },
                 {
@@ -83,7 +83,7 @@
                     searchable: true
                 },
                 {
-                    data: "pembeli", 
+                    data: "pembeli",
                     className: "",
                     orderable: false,
                     searchable: true

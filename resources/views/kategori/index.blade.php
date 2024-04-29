@@ -55,13 +55,13 @@
                 {
                     data: "kategori_kode",
                     className: "",
-                    orderable: false,
+                    orderable: true,
                     searchable: true
                 },
                 {
                     data: "kategori_nama",
                     className: "",
-                    orderable: false,
+                    orderable: true,
                     searchable: true
                 },
                 {

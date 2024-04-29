@@ -25,12 +25,22 @@
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="control-label">Tanggal:</label>
                 <input type="date" class="form-control" id="tanggal" name="tanggal">
                 @error('tanggal')
                     <small class="form-text text-danger">{{ $message }}</small>
                 @enderror
+            </div> --}}
+            <div class="form-group">
+                <label for="tanggal" class="col-1 control-label col-form-label">Tanggal:</label>
+                <div class="col-13">
+                    <input type="datetime-local" class="form-control" id="tanggal" name="tanggal"
+                           value="{{ old('tanggal') }}" required>
+                    @error('tanggal')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label">User:</label>

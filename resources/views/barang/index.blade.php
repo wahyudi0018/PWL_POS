@@ -74,13 +74,13 @@
     {
         data: "barang_kode",
         className: "",
-        orderable: false,
+        orderable: true,
         searchable: true
     },
     {
         data: "barang_nama",
         className: "",
-        orderable: false,
+        orderable: true,
         searchable: true
     },
     {

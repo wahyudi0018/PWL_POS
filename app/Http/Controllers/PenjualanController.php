@@ -104,7 +104,6 @@ class PenjualanController extends Controller
 
         return redirect('/penjualan')->with('success', 'Transaksi berhasil disimpan.');
     }
-    
     public function show(string $id)
     {
         $penjualan = PenjualanModel::with(['detail', 'user'])->find($id);
