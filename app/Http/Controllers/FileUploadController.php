@@ -42,7 +42,10 @@ class FileUploadController extends Controller
             'berkas'=>'required|file|image|max:5000',]);
             $extFile=$request->berkas->getClientOriginalName();
             $namaFile='web'.time().".".$extFile;
-            $path = $request->berkas->storeAS('uploads',$namaFile);
+            $path = $request->berkas->storeAS('public',$namaFile);
+            $pathBaru=asset('storage/'.$namaFile);
             echo "proses upload berhasil. file berada di: $path";
+            echo "<br>";
+            echo "Tampilan link:<a href='$pathBaru'>$pathBaru</a>";
     }
 }
