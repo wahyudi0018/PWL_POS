@@ -11,6 +11,7 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\FileUploadController;
 // use App\Http\Controllers\POSController;
 
 /*
@@ -143,3 +144,7 @@ Route::group(['middleware' => ['cek_login:1']], function(){
 Route::group(['middleware' => ['cek_login:2']], function(){
     Route::resource('manager', ManagerController::class);
 });
+
+// Route FileUpload
+Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
+Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
