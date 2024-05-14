@@ -48,18 +48,24 @@ class FileUploadController extends Controller
         //     echo "<br>";
         //     echo "Tampilan link:<a href='$pathBaru'>$pathBaru</a>";
 
-        // $request->validate([
-        //     'berkas'=>'required|file|image|max:5000',]);
-        //     $extFile=$request->berkas->getClientOriginalName();
-        //     $namaFile='web'.time().".".$extFile;
-        //     $path=$request->berkas->move('gambar',$namaFile);
-        //     $path=str_replace("\\","//", $path);
-        //     echo "Variabel path berisi:$path<br>";
-        //     $pathBaru=asset('gambar/'.$namaFile);
-        //     echo "proses upload berhasil. file berada di: $path";
-        //     echo "<br>";
-        //     echo "Tampilan link:<a href='$pathBaru'>$pathBaru</a>";
+        $request->validate([
+            'berkas'=>'required|file|image|max:5000',]);
+            $extFile=$request->berkas->getClientOriginalName();
+            $namaFile='web'.time().".".$extFile;
+            $path=$request->berkas->move('gambar',$namaFile);
+            $path=str_replace("\\","//", $path);
+            echo "Variabel path berisi:$path<br>";
+            $pathBaru=asset('gambar/'.$namaFile);
+            echo "proses upload berhasil. file berada di: $path";
+            echo "<br>";
+            echo "Tampilan link:<a href='$pathBaru'>$pathBaru</a>";
+    }
 
+    public function fileUploadRename(){
+        return view('file-upload-rename');
+    }
+
+    public function prosesFileUploadRename(Request $request){
         $request->validate([
             'nama_file' => 'required',
             'berkas' => 'required|file|image|max:5000'

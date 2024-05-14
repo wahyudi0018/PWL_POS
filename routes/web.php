@@ -148,3 +148,5 @@ Route::group(['middleware' => ['cek_login:2']], function(){
 // Route FileUpload
 Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
 Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
+Route::get('/file-upload-rename', [FileUploadController::class, 'fileUploadRename']);
+Route::post('/file-upload-rename', [FileUploadController::class, 'prosesfileUploadRename']);

@@ -66,7 +66,7 @@ class BarangController extends Controller
 
         return view('barang.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'kategori' => $kategori, 'activeMenu' => $activeMenu]);
     }
-    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -74,15 +74,23 @@ class BarangController extends Controller
             'barang_nama' => 'required|string|max:100',
             'kategori_id' => 'required|integer',
             'harga_beli' => 'required|integer',
-            'harga_jual' => 'required|integer'
+            'harga_jual' => 'required|integer',
+            'berkas' => 'required|file|image|max:5000'
         ]);
+
+        $file = $request->file('berkas');
+        $namaFile = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('gambar'), $namaFile);
+
+        $pathBaru = asset('gambar/' . $namaFile);
 
         BarangModel::create([
             'barang_kode' => $request->barang_kode,
             'barang_nama' => $request->barang_nama,
             'kategori_id' => $request->kategori_id,
             'harga_beli' => $request->harga_beli,
-            'harga_jual' => $request->harga_jual
+            'harga_jual' => $request->harga_jual,
+            'image' => $pathBaru
         ]);
 
         return redirect('/barang')->with('success', 'Data barang berhasil disimpan');
@@ -132,15 +140,23 @@ class BarangController extends Controller
             'barang_nama' => 'required|string|max:100',
             'kategori_id' => 'required|integer',
             'harga_beli' => 'required|integer',
-            'harga_jual' => 'required|integer'
+            'harga_jual' => 'required|integer',
+            'berkas' => 'required|file|image|max:5000'
         ]);
+
+        $file = $request->file('berkas');
+        $namaFile = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('gambar'), $namaFile);
+
+        $pathBaru = asset('gambar/' . $namaFile);
 
         BarangModel::find($id)->update([
             'barang_kode' => $request->barang_kode,
             'barang_nama' => $request->barang_nama,
             'kategori_id' => $request->kategori_id,
             'harga_beli' => $request->harga_beli,
-            'harga_jual' => $request->harga_jual
+            'harga_jual' => $request->harga_jual,
+            'image' => $pathBaru
         ]);
 
         return redirect('/barang')->with('success', 'Data barang berhasil diubah');
